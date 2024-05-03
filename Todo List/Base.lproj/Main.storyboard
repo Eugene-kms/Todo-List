@@ -22,57 +22,29 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGj-DI-a5X">
-                                <rect key="frame" x="36.000000000000007" y="118.99999999999999" width="97.666666666666686" height="34.333333333333329"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Groceries">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                    <color key="baseForegroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="groceriesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n2c-KI-NxB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDC-qb-E96">
-                                <rect key="frame" x="36" y="161.33333333333334" width="90" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Vacation">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                    <color key="baseForegroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="vacationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gLH-Xs-SQa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sji-AZ-SLV">
-                                <rect key="frame" x="36" y="204.33333333333334" width="129" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Home Chores">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                    <color key="baseForegroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="choresTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iE7-Hs-ZbG"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Xp-eeh">
+                                <rect key="frame" x="0.0" y="109" width="393" height="743"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FDC-qb-E96" firstAttribute="top" secondItem="zGj-DI-a5X" secondAttribute="bottom" constant="8" symbolic="YES" id="00x-RF-0aA"/>
-                            <constraint firstItem="FDC-qb-E96" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="1bU-vh-amh"/>
-                            <constraint firstItem="zGj-DI-a5X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="1iE-6n-nRt"/>
-                            <constraint firstItem="Sji-AZ-SLV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="DrY-aP-cK8"/>
                             <constraint firstItem="pBY-AU-Eq9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="FC2-4b-emc"/>
                             <constraint firstItem="pBY-AU-Eq9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JAG-z9-MdY"/>
-                            <constraint firstItem="zGj-DI-a5X" firstAttribute="top" secondItem="pBY-AU-Eq9" secondAttribute="bottom" constant="30" id="h4g-tM-clr"/>
-                            <constraint firstItem="Sji-AZ-SLV" firstAttribute="top" secondItem="FDC-qb-E96" secondAttribute="bottom" constant="8" symbolic="YES" id="iGY-WK-tew"/>
+                            <constraint firstAttribute="bottom" secondItem="5Fc-Xp-eeh" secondAttribute="bottom" id="NKa-7F-gpr"/>
+                            <constraint firstItem="5Fc-Xp-eeh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nih-RG-MWf"/>
+                            <constraint firstItem="5Fc-Xp-eeh" firstAttribute="top" secondItem="pBY-AU-Eq9" secondAttribute="bottom" constant="20" id="wqf-Qq-xlm"/>
+                            <constraint firstItem="5Fc-Xp-eeh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xVZ-JH-udy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="5Fc-Xp-eeh" id="JOe-aL-30x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="-2"/>
+            <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
         <!--Todo List View Controller-->
         <scene sceneID="YzM-Xu-swa">
@@ -143,12 +115,20 @@
                                     <constraint firstItem="Ht6-yS-nvp" firstAttribute="leading" secondItem="MlV-M2-CYd" secondAttribute="leading" id="syn-in-DX8"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MP6-Pi-cus">
+                                <rect key="frame" x="0.0" y="146" width="393" height="706"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ept-wn-5N2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="MP6-Pi-cus" secondAttribute="bottom" id="BUc-P0-ki2"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="top" secondItem="HJP-ee-KvL" secondAttribute="top" id="GuS-xL-8rF"/>
+                            <constraint firstItem="MP6-Pi-cus" firstAttribute="leading" secondItem="ept-wn-5N2" secondAttribute="leading" id="HIK-dn-pU1"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="leading" secondItem="HJP-ee-KvL" secondAttribute="leading" id="KkQ-WT-BAt"/>
+                            <constraint firstItem="MP6-Pi-cus" firstAttribute="trailing" secondItem="ept-wn-5N2" secondAttribute="trailing" id="jMB-Kn-7SI"/>
+                            <constraint firstItem="MP6-Pi-cus" firstAttribute="top" secondItem="8Mq-lA-XDm" secondAttribute="bottom" id="lSJ-3C-6ni"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="trailing" secondItem="ept-wn-5N2" secondAttribute="trailing" id="ueV-Sg-C0k"/>
                         </constraints>
                     </view>
@@ -156,6 +136,7 @@
                         <outlet property="headerView" destination="8Mq-lA-XDm" id="Uw4-cs-EXw"/>
                         <outlet property="iconImageView" destination="IUj-z3-OtL" id="vlg-XE-2DQ"/>
                         <outlet property="imageBackgroundView" destination="hX5-SM-ZFc" id="KYa-Qs-sGW"/>
+                        <outlet property="tableView" destination="MP6-Pi-cus" id="2NU-E1-qxN"/>
                         <outlet property="titleLbl" destination="MlV-M2-CYd" id="bQQ-6v-n64"/>
                     </connections>
                 </viewController>

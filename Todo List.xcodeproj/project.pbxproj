@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		444146C22BE4E2DF00CD0C71 /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444146C02BE4E2DF00CD0C71 /* TodoListCell.swift */; };
+		444146C32BE4E2DF00CD0C71 /* TodoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444146C12BE4E2DF00CD0C71 /* TodoListCell.xib */; };
+		444146CC2BE4F64400CD0C71 /* TodoListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444146CA2BE4F64400CD0C71 /* TodoListItemCell.swift */; };
+		444146CD2BE4F64400CD0C71 /* TodoListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444146CB2BE4F64400CD0C71 /* TodoListItemCell.xib */; };
 		449A8AEB2BE2DC9A00034A9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A8AEA2BE2DC9A00034A9A /* AppDelegate.swift */; };
 		449A8AED2BE2DC9A00034A9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A8AEC2BE2DC9A00034A9A /* SceneDelegate.swift */; };
 		449A8AF22BE2DC9A00034A9A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 449A8AF12BE2DC9A00034A9A /* Base */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		444146C02BE4E2DF00CD0C71 /* TodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
+		444146C12BE4E2DF00CD0C71 /* TodoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoListCell.xib; sourceTree = "<group>"; };
+		444146CA2BE4F64400CD0C71 /* TodoListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItemCell.swift; sourceTree = "<group>"; };
+		444146CB2BE4F64400CD0C71 /* TodoListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoListItemCell.xib; sourceTree = "<group>"; };
 		449A8AE72BE2DC9A00034A9A /* Todo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		449A8AEA2BE2DC9A00034A9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		449A8AEC2BE2DC9A00034A9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		444146BF2BE4E28F00CD0C71 /* TodoListCell */ = {
+			isa = PBXGroup;
+			children = (
+				444146C02BE4E2DF00CD0C71 /* TodoListCell.swift */,
+				444146C12BE4E2DF00CD0C71 /* TodoListCell.xib */,
+			);
+			path = TodoListCell;
+			sourceTree = "<group>";
+		};
+		444146C92BE4F60500CD0C71 /* TodoListItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				444146CA2BE4F64400CD0C71 /* TodoListItemCell.swift */,
+				444146CB2BE4F64400CD0C71 /* TodoListItemCell.xib */,
+			);
+			path = TodoListItemCell;
+			sourceTree = "<group>";
+		};
 		449A8ADE2BE2DC9A00034A9A = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +84,8 @@
 		449A8AE92BE2DC9A00034A9A /* Todo List */ = {
 			isa = PBXGroup;
 			children = (
+				444146C92BE4F60500CD0C71 /* TodoListItemCell */,
+				444146BF2BE4E28F00CD0C71 /* TodoListCell */,
 				449A8AEA2BE2DC9A00034A9A /* AppDelegate.swift */,
 				449A8AEC2BE2DC9A00034A9A /* SceneDelegate.swift */,
 				449A8AF02BE2DC9A00034A9A /* Main.storyboard */,
@@ -131,6 +159,8 @@
 				449A8AF42BE2DC9C00034A9A /* Assets.xcassets in Resources */,
 				449A8AF72BE2DC9C00034A9A /* Base in Resources */,
 				449A8AF22BE2DC9A00034A9A /* Base in Resources */,
+				444146CD2BE4F64400CD0C71 /* TodoListItemCell.xib in Resources */,
+				444146C32BE4E2DF00CD0C71 /* TodoListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +172,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				449A8B012BE2E6F000034A9A /* TodoListViewController.swift in Sources */,
+				444146C22BE4E2DF00CD0C71 /* TodoListCell.swift in Sources */,
+				444146CC2BE4F64400CD0C71 /* TodoListItemCell.swift in Sources */,
 				449A8AFF2BE2DDC400034A9A /* MyTodosViewController.swift in Sources */,
 				449A8AEB2BE2DC9A00034A9A /* AppDelegate.swift in Sources */,
 				449A8AED2BE2DC9A00034A9A /* SceneDelegate.swift in Sources */,
