@@ -21,8 +21,7 @@ class TodoListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageBackgroundView.layer.cornerRadius = 20
-        imageBackgroundView.layer.masksToBounds = true
+        imageBackgroundView.setCornerRadius(20)
         
         configure()
         configureTableView()
@@ -42,6 +41,13 @@ class TodoListViewController: UIViewController {
     
     @IBAction func backTapped(_ sender: Any) {
         dismiss(animated: true)
+    }
+}
+
+extension UIView {
+    func setCornerRadius(_ radius:CGFloat) {
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
     }
 }
 
