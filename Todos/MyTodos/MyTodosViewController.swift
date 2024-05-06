@@ -4,10 +4,13 @@ class MyTodosViewController: UIViewController {
     
     var lists: [TodoList] = []
     
+    @IBOutlet weak var addListBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addListBtn.setCornerRadius(14)
         
         lists = myTodoLists()
         configureTableView()
@@ -99,6 +102,13 @@ class MyTodosViewController: UIViewController {
         list.append("Organize the garage")
         
         return list
+    }
+    
+    
+    @IBAction func addTapped(_ sender: Any) {
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddListViewController") as! AddListViewController
+                
+        present(viewController, animated: true)
     }
 }
 
