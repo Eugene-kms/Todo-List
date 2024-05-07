@@ -272,6 +272,7 @@
                         <outlet property="iconImageView" destination="1lL-YP-PUB" id="afb-pF-FPJ"/>
                         <outlet property="imageBackgroundView" destination="EGt-b6-nFr" id="sEn-VR-Kg5"/>
                         <outlet property="saveBtn" destination="aY9-nJ-KXQ" id="1wm-tO-Zf5"/>
+                        <outlet property="saveBtnBottomConstraint" destination="hhu-Tx-K0L" id="mTV-C7-XD1"/>
                         <outlet property="tableView" destination="KBb-yG-lTF" id="DqQ-ok-8La"/>
                         <outlet property="textField" destination="PsB-p9-5CC" id="oK2-Os-mYi"/>
                     </connections>
