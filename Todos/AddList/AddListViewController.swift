@@ -57,6 +57,8 @@ class AddListViewController: UIViewController {
     private func setupHideKeyboardGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         
+        tap.delegate = self
+        
         view.addGestureRecognizer(tap)
     }
     
@@ -109,7 +111,25 @@ extension AddListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddTodoListColorPickerCell") as? AddTodoListColorPickerCell else { return UITableViewCell() }
         
         cell.configure(with: colors, selectedColor: selectedColor)
+        cell.didSelectColor = { [weak self] selectedColor in
+            self?.setSelectedColor(selectedColor, animated: true)
+        }
         
         return cell
+    }
+}
+
+extension AddListViewController:UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        var view = touch.view
+        
+        while view != nil {
+            if view is UICollectionViewCell {
+                return false
+            }
+            view = view?.superview
+        }
+        
+        return true
     }
 }

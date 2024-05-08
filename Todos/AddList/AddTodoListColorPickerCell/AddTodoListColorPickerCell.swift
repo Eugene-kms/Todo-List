@@ -7,6 +7,8 @@ class AddTodoListColorPickerCell: UITableViewCell {
     private var colors:[UIColor] = []
     private var selectedColor: UIColor = .clear
     
+    var didSelectColor: ((UIColor) -> ())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -50,15 +52,18 @@ extension AddTodoListColorPickerCell: UICollectionViewDelegateFlowLayout {
         CGSize(width: 44, height: 44)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        8
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        8
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        UIEdgeInsets(top: 13, left: 10, bottom: 0, right: 0)
+    }
+}
+
+extension AddTodoListColorPickerCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedColor = colors[indexPath.item]
+        didSelectColor?(selectedColor)
     }
 }
