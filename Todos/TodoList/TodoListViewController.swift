@@ -45,7 +45,7 @@ class TodoListViewController: UIViewController {
 }
 
 extension UIView {
-    func setCornerRadius(_ radius:CGFloat) {
+    func setCornerRadius(_ radius: CGFloat) {
         layer.cornerRadius = radius
         layer.masksToBounds = true
     }
