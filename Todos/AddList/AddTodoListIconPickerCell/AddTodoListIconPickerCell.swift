@@ -20,9 +20,9 @@ class AddTodoListIconPickerCell: UITableViewCell {
 
     private func configureCollectionView() {
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(UINib(nibName: "IconOptionCell", bundle: nil), forCellWithReuseIdentifier: "IconOptionCell")
     }
-    
 }
 
 extension AddTodoListIconPickerCell: UICollectionViewDataSource {
@@ -38,5 +38,20 @@ extension AddTodoListIconPickerCell: UICollectionViewDataSource {
         cell.configure(with: icon, isSelected: icon == selectedIcon)
         
         return cell
+    }
+}
+
+extension AddTodoListIconPickerCell: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 44, height: 44)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 13, left: 10, bottom: 0, right: 0)
     }
 }

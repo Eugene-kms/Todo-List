@@ -11,8 +11,6 @@ class IconOptionCell: UICollectionViewCell {
         circleView.backgroundColor = UIColor(hex: "#EBEBEB")
         circleView.setCornerRadius(16)
         circleView.layer.borderWidth = 1
-        
-        
     }
 
     func configure(with icon: UIImage, isSelected: Bool) {

@@ -22,28 +22,48 @@ class AddListViewController: UIViewController {
         imageBackgroundView.setCornerRadius(20)
         saveBtn.setCornerRadius(14)
         
-        fillColor()
+        fillColors()
+        fillIcons()
+        
         configureTableView()
-        setSelectedColor(.greenTodo, animated: true)
+        setSelectedColor(.greenTodo, animated: false)
+        setSelectedIcon(.avocadoIcon, animated: false)
         
         subscribeToKeyboard()
         setupHideKeyboardGesture()
     }
     
-    private func fillColor() {
+    private func fillColors() {
         self.colors = [.greenTodo, .redTodo, .yellowTodo, .blueTodo, .purpleTodo, .pinkTodo]
     }
     
+    private func fillIcons() {
+        self.icons = [.avocadoIcon, .vacationIcon, .rocketIcon, .choresIcon, .soccerIcon]
+    }
+
     private func setSelectedColor(_ color: UIColor, animated: Bool) {
         self.selectedColor = color
         tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         
         if animated {
-            UIView.animate(withDuration: 0.28) {
+            UIView.animate(withDuration: 0.25) {
                 self.headerView.backgroundColor = color
             }
         } else {
                 headerView.backgroundColor = color
+        }
+    }
+    
+    private func setSelectedIcon(_ icon: UIImage, animated: Bool) {
+        self.selectedIcon = icon
+        self.tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
+        
+        if animated {
+            UIView.animate(withDuration: 0.25) {
+                self.iconImageView.image = icon
+            }
+        } else {
+            self.iconImageView.image = icon
         }
     }
     
@@ -119,7 +139,7 @@ extension AddListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddTodoListColorPickerCell") as? AddTodoListColorPickerCell else { return UITableViewCell() }
             
