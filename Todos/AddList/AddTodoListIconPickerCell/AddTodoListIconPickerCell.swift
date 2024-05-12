@@ -7,6 +7,8 @@ class AddTodoListIconPickerCell: UITableViewCell {
     var icons: [UIImage] = []
     var selectedIcon: UIImage = UIImage()
     
+    var didSelectIcon: ((UIImage) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCollectionView()
@@ -53,5 +55,11 @@ extension AddTodoListIconPickerCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 13, left: 10, bottom: 0, right: 0)
+    }
+}
+
+extension AddTodoListIconPickerCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        didSelectIcon?(icons[indexPath.item])
     }
 }

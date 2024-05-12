@@ -10,6 +10,8 @@ class AddListViewController: UIViewController {
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var saveBtnBottomConstraint: NSLayoutConstraint!
     
+    var didSaveList: ((TodoList) -> Void)?
+    
     private var colors: [UIColor] = []
     private var selectedColor: UIColor = .clear
     
@@ -25,12 +27,43 @@ class AddListViewController: UIViewController {
         fillColors()
         fillIcons()
         
+        configureTextField()
         configureTableView()
         setSelectedColor(.greenTodo, animated: false)
         setSelectedIcon(.avocadoIcon, animated: false)
+        setSaveButton(enabled: false)
         
         subscribeToKeyboard()
         setupHideKeyboardGesture()
+    }
+    
+    private var isDataValid: Bool {
+        guard let text = textField.text else { return false }
+        
+        return text.count >= 3
+    }
+    
+    private func configureTextField() {
+        textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
+    }
+    
+    @objc private func didChangeText() {
+        setSaveButton(enabled: isDataValid)
+    }
+    
+    private func setSaveButton(enabled isEnabled: Bool) {
+        saveBtn.isUserInteractionEnabled = isEnabled
+        
+        saveBtn.tintColor = isEnabled ? .white : .accent
+        saveBtn.backgroundColor = isEnabled ? .accent : .accent.withAlphaComponent(0.15)
+//        it is the same code
+//        if isEnabled {
+//            saveBtn.tintColor = .white
+//            saveBtn.backgroundColor = .accent
+//        } else {
+//            saveBtn.tintColor = .accent
+//            saveBtn.backgroundColor = UIColor.accent.withAlphaComponent(0.15)
+//        }
     }
     
     private func fillColors() {
@@ -123,8 +156,18 @@ class AddListViewController: UIViewController {
     }
     
     @IBAction func saveBtn(_ sender: Any) {
+        guard isDataValid, let text = textField.text else { return }
+        
+        let todoList = TodoList(
+            title: text.trimmingCharacters(in: .whitespacesAndNewlines),
+            image: selectedIcon,
+            color: selectedColor,
+            items: [])
+        
+        didSaveList?(todoList)
+        
+        self.dismiss(animated: true)
     }
-    
 }
 
 extension AddListViewController: UITableViewDataSource {
@@ -147,13 +190,15 @@ extension AddListViewController: UITableViewDataSource {
             cell.didSelectColor = { [weak self] selectedColor in
                 self?.setSelectedColor(selectedColor, animated: true)
             }
-            
             return cell
+            
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddTodoListIconPickerCell") as? AddTodoListIconPickerCell else { return UITableViewCell() }
             
             cell.configure(with: icons, selectedIcon: selectedIcon)
-            
+            cell.didSelectIcon = { [weak self] selectedIcon in
+                self?.setSelectedIcon(selectedIcon, animated: true)
+            }
             return cell
         }
     }
@@ -169,7 +214,6 @@ extension AddListViewController:UIGestureRecognizerDelegate {
             }
             view = view?.superview
         }
-        
         return true
     }
 }
