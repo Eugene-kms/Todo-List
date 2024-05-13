@@ -228,6 +228,7 @@
                         <outlet property="tableView" destination="MP6-Pi-cus" id="2NU-E1-qxN"/>
                         <outlet property="tableViewBottomConstraint" destination="BUc-P0-ki2" id="buA-Rz-Cb5"/>
                         <outlet property="textField" destination="Cwe-UV-UVl" id="FF9-FP-5W6"/>
+                        <outlet property="textFieldLeftConstraint" destination="R5S-ms-2sL" id="6Yc-oD-65N"/>
                         <outlet property="titleLbl" destination="MlV-M2-CYd" id="bQQ-6v-n64"/>
                     </connections>
                 </viewController>

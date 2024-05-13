@@ -22,6 +22,7 @@ class TodoListViewController: UIViewController {
     @IBOutlet private weak var addNewItemSafeAreaView: UIView!
     @IBOutlet private weak var plusBtn: UIButton!
     @IBOutlet private weak var textField: UITextField!
+    @IBOutlet weak var textFieldLeftConstraint: NSLayoutConstraint!
     @IBOutlet private weak var addBtn: UIButton!
     @IBOutlet weak var addNewItemSaveAreaViewBottomConstraint: NSLayoutConstraint!
     
@@ -35,10 +36,27 @@ class TodoListViewController: UIViewController {
         configure()
         configureTableView()
         configureKeyboard()
+        configureAddItemView()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func configureAddItemView() {
+        addNewItemView.layer.masksToBounds = false
+        addNewItemView.layer.maskedCorners = [
+            .layerMinXMinYCorner,
+            .layerMaxXMinYCorner]
+        
+        addNewItemView.layer.cornerRadius = 15
+        addNewItemView.layer.shadowColor = UIColor.black.withAlphaComponent(0.25).cgColor
+        addNewItemView.layer.shadowOffset = .zero
+        addNewItemView.layer.shadowRadius = 18.5
+        addNewItemView.layer.shadowPath = UIBezierPath(roundedRect: addNewItemView.bounds, cornerRadius: addNewItemView.layer.cornerRadius).cgPath
+        addNewItemView.layer.shadowOpacity = 1
+        
+        addNewItemSafeAreaView.setCornerRadius(15)
     }
     
     private func configureKeyboard() {
@@ -60,22 +78,33 @@ class TodoListViewController: UIViewController {
               let endFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
         
+        let animationCurveRawNumber = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSNumber
+        let animationCurveRaw = animationCurveRawNumber?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+        let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
+        
+        let isKeyboardHidden = endFrame.origin.y >= UIScreen.main.bounds.size.height
+        
         //if the keyboard is hidden
-        if endFrame.origin.y >= UIScreen.main.bounds.size.height {
+        if isKeyboardHidden {
             addNewItemSaveAreaViewBottomConstraint.constant = 0
             tableViewBottomConstraint.constant = 0
+            textFieldLeftConstraint.constant = 48
         } else {//if the keyboard is presented
             addNewItemSaveAreaViewBottomConstraint.constant = -endFrame.height + view.safeAreaInsets.bottom - 8
             tableViewBottomConstraint.constant = endFrame.height + 8 + addNewItemSafeAreaView.frame.height
+            textFieldLeftConstraint.constant = 16
         }
         
-        UIView.animate(withDuration: duration) {
+        UIView.animate(withDuration: duration, delay: 0, options: animationCurve) {
+            self.plusBtn.alpha = isKeyboardHidden ? 1 : 0
+            self.addBtn.alpha = isKeyboardHidden ? 0 : 1
             self.view.layoutIfNeeded()
         }
     }
     
     private func configureTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
         let cellName = "TodoListItemCell"
         tableView.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
     }
@@ -115,3 +144,11 @@ extension TodoListViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension TodoListViewController: UIScrollViewDelegate, UITableViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+}
+
