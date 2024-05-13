@@ -37,6 +37,10 @@ class AddListViewController: UIViewController {
         setupHideKeyboardGesture()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private var isDataValid: Bool {
         guard let text = textField.text else { return false }
         
@@ -67,11 +71,22 @@ class AddListViewController: UIViewController {
     }
     
     private func fillColors() {
-        self.colors = [.greenTodo, .redTodo, .yellowTodo, .blueTodo, .purpleTodo, .pinkTodo]
+        self.colors = [
+            .greenTodo,
+            .redTodo,
+            .yellowTodo,
+            .blueTodo,
+            .purpleTodo,
+            .pinkTodo]
     }
     
     private func fillIcons() {
-        self.icons = [.avocadoIcon, .vacationIcon, .rocketIcon, .choresIcon, .soccerIcon]
+        self.icons = [
+            .avocadoIcon,
+            .vacationIcon, 
+            .rocketIcon,
+            .choresIcon,
+            .soccerIcon]
     }
 
     private func setSelectedColor(_ color: UIColor, animated: Bool) {
@@ -143,8 +158,6 @@ class AddListViewController: UIViewController {
             let buttonBottomMargin = 16 + endFrame.height - view.safeAreaInsets.bottom
             saveBtnBottomConstraint.constant = buttonBottomMargin
         }
-        
-        view.layoutIfNeeded()
         
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()

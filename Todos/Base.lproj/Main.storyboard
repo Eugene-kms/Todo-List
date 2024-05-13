@@ -138,24 +138,96 @@
                                 <rect key="frame" x="0.0" y="146" width="393" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oej-VL-yQu">
+                                <rect key="frame" x="0.0" y="766" width="393" height="86"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVp-IE-BKX">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-9h-rVt">
+                                                <rect key="frame" x="4" y="4" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="DT7-2i-XAO"/>
+                                                    <constraint firstAttribute="width" constant="44" id="Fgi-Ve-ngC"/>
+                                                </constraints>
+                                                <color key="tintColor" name="accentColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="plusBtnTapped:" destination="nPU-6q-uyB" eventType="touchUpInside" id="blo-TS-Gw4"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add New Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cwe-UV-UVl">
+                                                <rect key="frame" x="48" y="15.666666666666629" width="285" height="21"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1S-1F-gdz">
+                                                <rect key="frame" x="333" y="4" width="56" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="PWM-mO-oR9"/>
+                                                    <constraint firstAttribute="width" constant="56" id="UDc-fJ-oWc"/>
+                                                </constraints>
+                                                <color key="tintColor" name="AccentColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Add">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="addBtnTapped:" destination="nPU-6q-uyB" eventType="touchUpInside" id="BSQ-Bv-Gir"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ib4-9h-rVt" firstAttribute="centerY" secondItem="dVp-IE-BKX" secondAttribute="centerY" id="7A8-zS-r9l"/>
+                                            <constraint firstAttribute="trailing" secondItem="A1S-1F-gdz" secondAttribute="trailing" constant="4" id="LAB-AF-H6h"/>
+                                            <constraint firstItem="A1S-1F-gdz" firstAttribute="centerY" secondItem="dVp-IE-BKX" secondAttribute="centerY" id="PDN-ib-nYz"/>
+                                            <constraint firstItem="Cwe-UV-UVl" firstAttribute="leading" secondItem="dVp-IE-BKX" secondAttribute="leading" constant="48" id="R5S-ms-2sL"/>
+                                            <constraint firstAttribute="height" constant="52" id="T7K-aT-Zwi"/>
+                                            <constraint firstItem="ib4-9h-rVt" firstAttribute="leading" secondItem="dVp-IE-BKX" secondAttribute="leading" constant="4" id="WQ7-eh-8dd"/>
+                                            <constraint firstItem="Cwe-UV-UVl" firstAttribute="centerY" secondItem="dVp-IE-BKX" secondAttribute="centerY" id="Xcb-DU-KRb"/>
+                                            <constraint firstItem="A1S-1F-gdz" firstAttribute="leading" secondItem="Cwe-UV-UVl" secondAttribute="trailing" id="quw-xi-0h6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="dVp-IE-BKX" firstAttribute="leading" secondItem="oej-VL-yQu" secondAttribute="leading" id="9Wt-pH-vWb"/>
+                                    <constraint firstItem="dVp-IE-BKX" firstAttribute="top" secondItem="oej-VL-yQu" secondAttribute="top" id="Bg5-pr-Oxn"/>
+                                    <constraint firstAttribute="trailing" secondItem="dVp-IE-BKX" secondAttribute="trailing" id="ZON-Y8-FgU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ept-wn-5N2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="MP6-Pi-cus" secondAttribute="bottom" id="BUc-P0-ki2"/>
+                            <constraint firstItem="oej-VL-yQu" firstAttribute="trailing" secondItem="ept-wn-5N2" secondAttribute="trailing" id="Eu9-uz-p64"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="top" secondItem="HJP-ee-KvL" secondAttribute="top" id="GuS-xL-8rF"/>
                             <constraint firstItem="MP6-Pi-cus" firstAttribute="leading" secondItem="ept-wn-5N2" secondAttribute="leading" id="HIK-dn-pU1"/>
+                            <constraint firstItem="oej-VL-yQu" firstAttribute="leading" secondItem="ept-wn-5N2" secondAttribute="leading" id="JMC-6C-GVP"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="leading" secondItem="HJP-ee-KvL" secondAttribute="leading" id="KkQ-WT-BAt"/>
+                            <constraint firstAttribute="bottom" secondItem="oej-VL-yQu" secondAttribute="bottom" id="Omv-af-U9X"/>
                             <constraint firstItem="MP6-Pi-cus" firstAttribute="trailing" secondItem="ept-wn-5N2" secondAttribute="trailing" id="jMB-Kn-7SI"/>
                             <constraint firstItem="MP6-Pi-cus" firstAttribute="top" secondItem="8Mq-lA-XDm" secondAttribute="bottom" id="lSJ-3C-6ni"/>
+                            <constraint firstItem="dVp-IE-BKX" firstAttribute="bottom" secondItem="ept-wn-5N2" secondAttribute="bottom" id="uFq-Px-fIR"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="trailing" secondItem="ept-wn-5N2" secondAttribute="trailing" id="ueV-Sg-C0k"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addBtn" destination="A1S-1F-gdz" id="OPK-D5-3YN"/>
+                        <outlet property="addNewItemSafeAreaView" destination="dVp-IE-BKX" id="f8U-UO-CdM"/>
+                        <outlet property="addNewItemSaveAreaViewBottomConstraint" destination="uFq-Px-fIR" id="lKH-32-Ouk"/>
+                        <outlet property="addNewItemView" destination="oej-VL-yQu" id="XKH-Uq-lFT"/>
                         <outlet property="headerView" destination="8Mq-lA-XDm" id="Uw4-cs-EXw"/>
                         <outlet property="iconImageView" destination="IUj-z3-OtL" id="vlg-XE-2DQ"/>
                         <outlet property="imageBackgroundView" destination="hX5-SM-ZFc" id="KYa-Qs-sGW"/>
+                        <outlet property="plusBtn" destination="ib4-9h-rVt" id="KpX-4e-O7f"/>
                         <outlet property="tableView" destination="MP6-Pi-cus" id="2NU-E1-qxN"/>
+                        <outlet property="tableViewBottomConstraint" destination="BUc-P0-ki2" id="buA-Rz-Cb5"/>
+                        <outlet property="textField" destination="Cwe-UV-UVl" id="FF9-FP-5W6"/>
                         <outlet property="titleLbl" destination="MlV-M2-CYd" id="bQQ-6v-n64"/>
                     </connections>
                 </viewController>
@@ -288,6 +360,9 @@
         <image name="exit" width="28" height="28"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="accentColor">
             <color red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
