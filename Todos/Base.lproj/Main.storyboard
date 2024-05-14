@@ -135,7 +135,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MP6-Pi-cus">
-                                <rect key="frame" x="0.0" y="146" width="393" height="706"/>
+                                <rect key="frame" x="0.0" y="146" width="393" height="620"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oej-VL-yQu">
@@ -203,8 +203,8 @@
                         <viewLayoutGuide key="safeArea" id="ept-wn-5N2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="MP6-Pi-cus" secondAttribute="bottom" id="BUc-P0-ki2"/>
                             <constraint firstItem="oej-VL-yQu" firstAttribute="trailing" secondItem="ept-wn-5N2" secondAttribute="trailing" id="Eu9-uz-p64"/>
+                            <constraint firstItem="oej-VL-yQu" firstAttribute="top" secondItem="MP6-Pi-cus" secondAttribute="bottom" id="Gg7-hv-DWA"/>
                             <constraint firstItem="8Mq-lA-XDm" firstAttribute="top" secondItem="HJP-ee-KvL" secondAttribute="top" id="GuS-xL-8rF"/>
                             <constraint firstItem="MP6-Pi-cus" firstAttribute="leading" secondItem="ept-wn-5N2" secondAttribute="leading" id="HIK-dn-pU1"/>
                             <constraint firstItem="oej-VL-yQu" firstAttribute="leading" secondItem="ept-wn-5N2" secondAttribute="leading" id="JMC-6C-GVP"/>
@@ -226,7 +226,6 @@
                         <outlet property="imageBackgroundView" destination="hX5-SM-ZFc" id="KYa-Qs-sGW"/>
                         <outlet property="plusBtn" destination="ib4-9h-rVt" id="KpX-4e-O7f"/>
                         <outlet property="tableView" destination="MP6-Pi-cus" id="2NU-E1-qxN"/>
-                        <outlet property="tableViewBottomConstraint" destination="BUc-P0-ki2" id="buA-Rz-Cb5"/>
                         <outlet property="textField" destination="Cwe-UV-UVl" id="FF9-FP-5W6"/>
                         <outlet property="textFieldLeftConstraint" destination="R5S-ms-2sL" id="6Yc-oD-65N"/>
                         <outlet property="titleLbl" destination="MlV-M2-CYd" id="bQQ-6v-n64"/>
@@ -365,7 +364,7 @@
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="accentColor">
-            <color red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
