@@ -23,7 +23,7 @@ class TodoListViewController: UIViewController {
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var titleLbl: UILabel!
     
-//  Add New Item area
+//  "Add New Item" area
     @IBOutlet private weak var addNewItemView: UIView!
     @IBOutlet private weak var addNewItemSafeAreaView: UIView!
     @IBOutlet private weak var plusBtn: UIButton!
