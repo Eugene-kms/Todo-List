@@ -13,8 +13,8 @@ class IconOptionCell: UICollectionViewCell {
         circleView.layer.borderWidth = 1
     }
 
-    func configure(with icon: UIImage, isSelected: Bool) {
-        iconImageView.image = icon
+    func configure(with icon: String, isSelected: Bool) {
+        iconImageView.image = UIImage(named: icon)
         
 //        if isSelected {
 //            circleView.layer.borderColor = UIColor.accent.cgColor

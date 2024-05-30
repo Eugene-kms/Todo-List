@@ -2,11 +2,11 @@ import UIKit
 
 struct TodoList {
     let title: String
-    let image: UIImage
+    let image: String
     let color: UIColor
     var items: [String]
     
-    init(title: String, image: UIImage, color: UIColor, items: [String]) {
+    init(title: String, image: String, color: UIColor, items: [String]) {
         self.title = title
         self.image = image
         self.color = color
@@ -136,7 +136,7 @@ class TodoListViewController: UIViewController {
     
     private func configure() {
         headerView.backgroundColor = todoList.color
-        iconImageView.image = todoList.image
+        iconImageView.image = UIImage(named: todoList.image)
         titleLbl.text = todoList.title
     }
     
