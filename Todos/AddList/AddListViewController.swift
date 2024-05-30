@@ -15,8 +15,8 @@ class AddListViewController: UIViewController {
     private var colors: [UIColor] = []
     private var selectedColor: UIColor = .clear
     
-    private var icons = [UIImage]()
-    private var selectedIcon = UIImage()
+    private var icons = [String]()
+    private var selectedIcon = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class AddListViewController: UIViewController {
         configureTextField()
         configureTableView()
         setSelectedColor(.greenTodo, animated: false)
-        setSelectedIcon(.avocadoIcon, animated: false)
+        setSelectedIcon("avocado", animated: false)
         setSaveButton(enabled: false)
         
         subscribeToKeyboard()
@@ -82,11 +82,11 @@ class AddListViewController: UIViewController {
     
     private func fillIcons() {
         self.icons = [
-            .avocadoIcon,
-            .vacationIcon, 
-            .rocketIcon,
-            .choresIcon,
-            .soccerIcon]
+            "avocado",
+            "vacation",
+            "rocket",
+            "chores",
+            "soccer"]
     }
 
     private func setSelectedColor(_ color: UIColor, animated: Bool) {
@@ -102,16 +102,16 @@ class AddListViewController: UIViewController {
         }
     }
     
-    private func setSelectedIcon(_ icon: UIImage, animated: Bool) {
+    private func setSelectedIcon(_ icon: String, animated: Bool) {
         self.selectedIcon = icon
         self.tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
         
         if animated {
             UIView.animate(withDuration: 0.25) {
-                self.iconImageView.image = icon
+                self.iconImageView.image = UIImage(named: icon)
             }
         } else {
-            self.iconImageView.image = icon
+            self.iconImageView.image = UIImage(named: icon)
         }
     }
     
