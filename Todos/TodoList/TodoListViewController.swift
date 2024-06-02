@@ -1,19 +1,5 @@
 import UIKit
 
-struct TodoList {
-    let title: String
-    let image: String
-    let color: UIColor
-    var items: [String]
-    
-    init(title: String, image: String, color: UIColor, items: [String]) {
-        self.title = title
-        self.image = image
-        self.color = color
-        self.items = items
-    }
-}
-
 //class for all screen(groceries, vacation, home chores)
 class TodoListViewController: UIViewController {
     
@@ -162,6 +148,78 @@ class TodoListViewController: UIViewController {
         setAddNewItemButton(enabled: false)
     }
     
+    @IBAction func moreButtonTapped(_ sender: Any) {
+        let sheet = UIAlertController(
+            title: "More Actions",
+            message: "What do you want to do?",
+            preferredStyle: .actionSheet)
+        
+        sheet.addAction(UIAlertAction(
+            title: "Edit",
+            style: .default,
+            handler: { _ in
+                self.presentEdit()
+            }))
+        
+        sheet.addAction(UIAlertAction(
+            title: "Delete List",
+            style: .destructive,
+            handler: { [weak self] _ in
+                self?.presentDeletePromt()
+            }))
+        
+        sheet.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel))
+        
+        self.present(sheet, animated: true)
+    }
+    
+    private func presentDeletePromt() {
+        let alert = UIAlertController(
+            title: "Are you sure?",
+            message: "Deleting the app will forever remove all the items and the list itself",
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(
+            title: "Delete",
+            style: .default,
+            handler: { _ in
+                
+            }))
+        alert.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel))
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func presentEdit() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddListViewController") as! AddListViewController
+        
+        vc.todoList = todoList
+        
+        vc.didSaveList = { [weak self] todoList in
+            self?.updateList(todoList)
+        }
+        
+        self.present(vc, animated: true)
+    }
+    
+    private func updateList(_ todoList: TodoList) {
+        
+        self.todoList.update(with: todoList)
+        
+        configure()
+    }
+}
+
+extension TodoList {
+    mutating func update(with todoList: TodoList) {
+        title = todoList.title
+        color = todoList.color
+        image = todoList.image
+    }
 }
 
 extension TodoListViewController: UITableViewDataSource {

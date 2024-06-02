@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -119,14 +119,28 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNw-V6-Isy">
+                                        <rect key="frame" x="341" y="6" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="XYZ-QT-EQK"/>
+                                            <constraint firstAttribute="height" constant="44" id="rKD-6W-Aak"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="more"/>
+                                        <connections>
+                                            <action selector="moreButtonTapped:" destination="nPU-6q-uyB" eventType="touchUpInside" id="1fh-VP-z9r"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hX5-SM-ZFc" secondAttribute="bottom" constant="16" id="07d-qI-Ymc"/>
                                     <constraint firstItem="MlV-M2-CYd" firstAttribute="leading" secondItem="hX5-SM-ZFc" secondAttribute="trailing" constant="12" id="2y9-uW-zLj"/>
                                     <constraint firstItem="To7-cf-F68" firstAttribute="leading" secondItem="8Mq-lA-XDm" secondAttribute="leading" constant="8" id="CD9-FH-Pbb"/>
+                                    <constraint firstAttribute="trailing" secondItem="dNw-V6-Isy" secondAttribute="trailing" constant="8" id="Eyh-EI-Rbl"/>
                                     <constraint firstItem="To7-cf-F68" firstAttribute="top" secondItem="8Mq-lA-XDm" secondAttribute="top" constant="6" id="PBJ-l0-q1w"/>
                                     <constraint firstItem="hX5-SM-ZFc" firstAttribute="leading" secondItem="8Mq-lA-XDm" secondAttribute="leading" constant="16" id="WLF-nV-0J0"/>
+                                    <constraint firstItem="dNw-V6-Isy" firstAttribute="top" secondItem="8Mq-lA-XDm" secondAttribute="top" constant="6" id="a7o-2Q-f4U"/>
                                     <constraint firstItem="MlV-M2-CYd" firstAttribute="top" secondItem="hX5-SM-ZFc" secondAttribute="top" constant="2" id="hUi-Bc-8Lc"/>
                                     <constraint firstItem="Ht6-yS-nvp" firstAttribute="leading" secondItem="hX5-SM-ZFc" secondAttribute="trailing" constant="12" id="m7n-Lb-z24"/>
                                     <constraint firstAttribute="height" constant="146" id="ori-Pe-z2l"/>
@@ -358,6 +372,7 @@
     <resources>
         <image name="avocadoIcon" width="20" height="20"/>
         <image name="exit" width="28" height="28"/>
+        <image name="more" width="28" height="28"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">

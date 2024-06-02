@@ -39,7 +39,9 @@ extension AddTodoListColorPickerCell: UICollectionViewDataSource {
         
         let color = colors[indexPath.item]
         
-        let option = ColorOption(color: color, isSelected: color == selectedColor)
+        let option = ColorOption(
+            color: color,
+            isSelected: color.hexString == selectedColor.hexString)
         
         cell.configure(with: option)
         
