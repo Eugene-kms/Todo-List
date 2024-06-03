@@ -38,15 +38,29 @@ class TodoListRepository {
         
         var request = URLRequest(url: baseUrl
             .appending(path: "todos")
-            .appending(path: todoList.id))
+            .appending(path: todoList.id)
+            .appending(path: ".json"))
         
         request.httpMethod = "PATCH"
         request.httpBody = try JSONSerialization.data(withJSONObject: payloadDictionary)
         
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await URLSession.shared.data(for: request)
         let decoded = try JSONDecoder().decode(TodoListDTO.self, from: data)
         
         print("Successfully updated list with id \(todoList.id) \(decoded)")
+    }
+    
+    func deleteTodoList(with id: String) async throws {
+        var request = URLRequest(url: baseUrl
+            .appending(path: "todos")
+            .appending(path: id)
+            .appending(path: ".json"))
+        
+        request.httpMethod = "DELETE"
+        
+        let _ = try await URLSession.shared.data(for: request)
+        
+        print("Successfully deleted list with id \(id)")
     }
     
     private func toDomain(_ todoListResponse: TodoListResponse) -> [TodoList] {
@@ -88,3 +102,5 @@ extension TodoList {
 //curl -X POST -d '{ "title": "Groceries", "icon": "avocado", "color": "#4CAF50" }' 'https://todos-9ce97-default-rtdb.europe-west1.firebasedatabase.app/todos.json'
 
 //curl -X PATCH -d '{ "title": "Summer Vacation", "icon": "avocado", "color": "#4CAF50" }' 'https://todos-9ce97-default-rtdb.europe-west1.firebasedatabase.app/todos/vacation.json'
+
+//curl -X DELETE 'https://todos-9ce97-default-rtdb.europe-west1.firebasedatabase.app/todos/7F02D56B-AB46-4EE3-938C-7E400B3FDC19.json'

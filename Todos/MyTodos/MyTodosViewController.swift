@@ -31,7 +31,9 @@ class MyTodosViewController: UIViewController {
     func present(with todoList: TodoList) {
         let todoListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TodoListViewController") as! TodoListViewController
         
-        todoListViewController.todoList = todoList
+        let viewModel = TodoListViewModel(todoList: todoList)
+        
+        todoListViewController.viewModel = viewModel
         
         present(todoListViewController, animated: true)
     }
