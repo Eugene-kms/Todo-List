@@ -1,5 +1,47 @@
 import UIKit
 
+class TodoListViewModel {
+    
+    private let repository: TodoListRepository
+    
+    var todoList: TodoList
+    
+    init(repository: TodoListRepository = TodoListRepository(), todoList: TodoList) {
+        self.repository = repository
+        self.todoList = todoList
+    }
+    
+    func update(with todoList: TodoList) {
+        self.todoList.update(with: todoList)
+        
+        Task {
+            do {
+                try await repository.updateTodoList(self.todoList)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func delete() {
+        Task {
+            do {
+                try await repository.deleteTodoList(with: todoList.id)
+            } catch {
+                print(error)
+            }
+        }
+    }
+}
+
+extension TodoList {
+    mutating func update(with todoList: TodoList) {
+        title = todoList.title
+        color = todoList.color
+        image = todoList.image
+    }
+}
+
 //class for all screen(groceries, vacation, home chores)
 class TodoListViewController: UIViewController {
     
@@ -18,7 +60,7 @@ class TodoListViewController: UIViewController {
     @IBOutlet private weak var addBtn: UIButton!
     @IBOutlet weak var addNewItemSaveAreaViewBottomConstraint: NSLayoutConstraint!
     
-    var todoList: TodoList!
+    var viewModel: TodoListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,9 +163,9 @@ class TodoListViewController: UIViewController {
     }
     
     private func configure() {
-        headerView.backgroundColor = todoList.color
-        iconImageView.image = UIImage(named: todoList.image)
-        titleLbl.text = todoList.title
+        headerView.backgroundColor = viewModel.todoList.color
+        iconImageView.image = UIImage(named: viewModel.todoList.image)
+        titleLbl.text = viewModel.todoList.title
     }
     
     @IBAction func backTapped(_ sender: Any) {
@@ -138,9 +180,9 @@ class TodoListViewController: UIViewController {
         guard isNewItemValid, let text = textField.text else { return }
         
         let itemTrimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        todoList.items.append(itemTrimmed)
+        viewModel.todoList.items.append(itemTrimmed)
         
-        let indexPath = IndexPath(row: todoList.items.count - 1, section: 0)
+        let indexPath = IndexPath(row: viewModel.todoList.items.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         
@@ -184,8 +226,8 @@ class TodoListViewController: UIViewController {
         alert.addAction(UIAlertAction(
             title: "Delete",
             style: .default,
-            handler: { _ in
-                
+            handler: { [weak self] _ in
+                self?.deleteListAndDismiss()
             }))
         alert.addAction(UIAlertAction(
             title: "Cancel",
@@ -197,7 +239,7 @@ class TodoListViewController: UIViewController {
     private func presentEdit() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddListViewController") as! AddListViewController
         
-        vc.todoList = todoList
+        vc.todoList = viewModel.todoList
         
         vc.didSaveList = { [weak self] todoList in
             self?.updateList(todoList)
@@ -208,29 +250,26 @@ class TodoListViewController: UIViewController {
     
     private func updateList(_ todoList: TodoList) {
         
-        self.todoList.update(with: todoList)
+        viewModel.update(with: todoList)
         
         configure()
     }
-}
-
-extension TodoList {
-    mutating func update(with todoList: TodoList) {
-        title = todoList.title
-        color = todoList.color
-        image = todoList.image
+    
+    private func deleteListAndDismiss() {
+        viewModel.delete()
+        self.dismiss(animated: true)
     }
 }
 
 extension TodoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        todoList.items.count
+        viewModel.todoList.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListItemCell") as? TodoListItemCell else { return UITableViewCell() }
         
-        let item = todoList.items[indexPath.row]
+        let item = viewModel.todoList.items[indexPath.row]
         
         cell.configure(with: item)
         
