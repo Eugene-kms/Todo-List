@@ -10,7 +10,7 @@ class TodoListViewModel {
         !item.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
-    init(repository: TodoListRepository = TodoListRepository(), todoList: TodoList) {
+    init(repository: TodoListRepository = TodoListRepositoryLive(), todoList: TodoList) {
         self.repository = repository
         self.todoList = todoList
     }

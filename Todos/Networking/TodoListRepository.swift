@@ -1,6 +1,14 @@
 import UIKit
 
-class TodoListRepository {
+protocol TodoListRepository {
+    func fetchTodoLists() async throws -> [TodoList]
+    func addTodoList(_ todoList: TodoList) async throws -> String
+    func updateTodoList(_ todoList: TodoList) async throws
+    func deleteTodoList(with id: String) async throws
+    func addItem(to todoList: TodoList, item: String) async throws
+}
+
+class TodoListRepositoryLive: TodoListRepository {
     
     typealias TodoListResponse = [String: TodoListDTO]
     
