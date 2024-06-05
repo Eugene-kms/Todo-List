@@ -1,47 +1,5 @@
 import UIKit
 
-class TodoListViewModel {
-    
-    private let repository: TodoListRepository
-    
-    var todoList: TodoList
-    
-    init(repository: TodoListRepository = TodoListRepository(), todoList: TodoList) {
-        self.repository = repository
-        self.todoList = todoList
-    }
-    
-    func update(with todoList: TodoList) {
-        self.todoList.update(with: todoList)
-        
-        Task {
-            do {
-                try await repository.updateTodoList(self.todoList)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func delete() {
-        Task {
-            do {
-                try await repository.deleteTodoList(with: todoList.id)
-            } catch {
-                print(error)
-            }
-        }
-    }
-}
-
-extension TodoList {
-    mutating func update(with todoList: TodoList) {
-        title = todoList.title
-        color = todoList.color
-        image = todoList.image
-    }
-}
-
 //class for all screen(groceries, vacation, home chores)
 class TodoListViewController: UIViewController {
     
@@ -76,6 +34,12 @@ class TodoListViewController: UIViewController {
         setAddNewItemButton(enabled: false)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presentingViewController?.viewWillAppear(animated)
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -84,13 +48,8 @@ class TodoListViewController: UIViewController {
         textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
     }
     
-    private var isNewItemValid: Bool {
-        guard let text = textField.text else { return false }
-        return !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
-    
     @objc private func didChangeText() {
-        setAddNewItemButton(enabled: isNewItemValid)
+        setAddNewItemButton(enabled: viewModel.isNewItemValid(textField.text ?? ""))
     }
     
     private func setAddNewItemButton(enabled isEnabled: Bool) {
@@ -177,10 +136,11 @@ class TodoListViewController: UIViewController {
     }
     
     @IBAction func addBtnTapped(_ sender: Any) {
-        guard isNewItemValid, let text = textField.text else { return }
+        guard
+            let text = textField.text,
+            viewModel.isNewItemValid(text) else { return }
         
-        let itemTrimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        viewModel.todoList.items.append(itemTrimmed)
+        viewModel.addItem(text)
         
         let indexPath = IndexPath(row: viewModel.todoList.items.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
@@ -271,7 +231,7 @@ extension TodoListViewController: UITableViewDataSource {
         
         let item = viewModel.todoList.items[indexPath.row]
         
-        cell.configure(with: item)
+        cell.configure(with: item.content)
         
         return cell
     }

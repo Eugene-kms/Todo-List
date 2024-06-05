@@ -1,5 +1,5 @@
 import Foundation
 
-struct AddTodoListResponse: Codable {
+struct DatabasePOSTResponse: Codable {
     let name: String
 }
