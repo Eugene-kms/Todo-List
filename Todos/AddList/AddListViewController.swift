@@ -44,6 +44,12 @@ class AddListViewController: UIViewController {
         setupHideKeyboardGesture()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presentingViewController?.viewWillAppear(animated)
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
