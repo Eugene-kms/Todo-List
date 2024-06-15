@@ -131,6 +131,18 @@
                                             <action selector="moreButtonTapped:" destination="nPU-6q-uyB" eventType="touchUpInside" id="1fh-VP-z9r"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuO-hQ-VDH">
+                                        <rect key="frame" x="297" y="6" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="0xP-jg-4ir"/>
+                                            <constraint firstAttribute="height" constant="44" id="Rmr-wr-e7g"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="share"/>
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="nPU-6q-uyB" eventType="touchUpInside" id="aW4-Ht-aTP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
@@ -138,7 +150,9 @@
                                     <constraint firstItem="MlV-M2-CYd" firstAttribute="leading" secondItem="hX5-SM-ZFc" secondAttribute="trailing" constant="12" id="2y9-uW-zLj"/>
                                     <constraint firstItem="To7-cf-F68" firstAttribute="leading" secondItem="8Mq-lA-XDm" secondAttribute="leading" constant="8" id="CD9-FH-Pbb"/>
                                     <constraint firstAttribute="trailing" secondItem="dNw-V6-Isy" secondAttribute="trailing" constant="8" id="Eyh-EI-Rbl"/>
+                                    <constraint firstItem="dNw-V6-Isy" firstAttribute="leading" secondItem="NuO-hQ-VDH" secondAttribute="trailing" id="KLe-5b-2mj"/>
                                     <constraint firstItem="To7-cf-F68" firstAttribute="top" secondItem="8Mq-lA-XDm" secondAttribute="top" constant="6" id="PBJ-l0-q1w"/>
+                                    <constraint firstItem="dNw-V6-Isy" firstAttribute="top" secondItem="NuO-hQ-VDH" secondAttribute="top" id="QcB-1a-Vz4"/>
                                     <constraint firstItem="hX5-SM-ZFc" firstAttribute="leading" secondItem="8Mq-lA-XDm" secondAttribute="leading" constant="16" id="WLF-nV-0J0"/>
                                     <constraint firstItem="dNw-V6-Isy" firstAttribute="top" secondItem="8Mq-lA-XDm" secondAttribute="top" constant="6" id="a7o-2Q-f4U"/>
                                     <constraint firstItem="MlV-M2-CYd" firstAttribute="top" secondItem="hX5-SM-ZFc" secondAttribute="top" constant="2" id="hUi-Bc-8Lc"/>
@@ -239,6 +253,7 @@
                         <outlet property="iconImageView" destination="IUj-z3-OtL" id="vlg-XE-2DQ"/>
                         <outlet property="imageBackgroundView" destination="hX5-SM-ZFc" id="KYa-Qs-sGW"/>
                         <outlet property="plusBtn" destination="ib4-9h-rVt" id="KpX-4e-O7f"/>
+                        <outlet property="shareButton" destination="NuO-hQ-VDH" id="FjN-aJ-gLa"/>
                         <outlet property="tableView" destination="MP6-Pi-cus" id="2NU-E1-qxN"/>
                         <outlet property="textField" destination="Cwe-UV-UVl" id="FF9-FP-5W6"/>
                         <outlet property="textFieldLeftConstraint" destination="R5S-ms-2sL" id="6Yc-oD-65N"/>
@@ -375,6 +390,7 @@
         <image name="more" width="28" height="28"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="share" width="28" height="28"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -8,6 +8,8 @@ class TodoListViewController: UIViewController {
     @IBOutlet private weak var imageBackgroundView: UIView!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var titleLbl: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
+    
     
 //  "Add New Item" area
     @IBOutlet private weak var addNewItemView: UIView!
@@ -34,8 +36,8 @@ class TodoListViewController: UIViewController {
         setAddNewItemButton(enabled: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
         presentingViewController?.viewWillAppear(animated)
     }
@@ -175,6 +177,19 @@ class TodoListViewController: UIViewController {
             style: .cancel))
         
         self.present(sheet, animated: true)
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+
+        var todoListString = "\(viewModel.todoList.title):\n"
+        
+        for review in viewModel.todoList.items {
+            todoListString += "  -\(review.content)\n"
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [todoListString], applicationActivities: nil)
+        
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     private func presentDeletePromt() {
